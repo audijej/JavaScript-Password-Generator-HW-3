@@ -1,11 +1,4 @@
 
-
-
-alert("Let's create a password. Please click Generate Password button");
-
-
-
-
 //let ammountCharacters = prompt("How many characters would you like your password to contain?");
 //let minLength = 8;
 //let maxLength = 128;
@@ -14,8 +7,13 @@ alert("Let's create a password. Please click Generate Password button");
 //let numberCase = confirm("Would you like numbers?");
 //let symbolCase = confirm("Would you like symbols?");
 
-let completeList = "0123456789!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+//The application first starts with this alert.
+alert("Let's create a password. Please click Generate Password button");
+
+//This is a the list of arrays and variables used throughout the application.
+
+let completeList = "0123456789!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 let lowerCaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
     'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -33,11 +31,13 @@ let combinedArr = []
 
 let amountCharacters;
 
+//This is the first function to call gather the users input for parameters of their password.
+
 function buttonPassword() {
 
     amountCharacters = prompt("How many characters would you like your password to be?");
     while (isNaN(amountCharacters) || amountCharacters < 8 || amountCharacters > 128) amountCharacters = Number(prompt("Length must be 8-128 characters. How many characters would you like your password to be?"));
-        for ( var i = minLength; i > maxLength; i++);
+        //for ( var i = minLength; i > maxLength; i++);
     
 
     let lowerCase = confirm("Would you like to use lowercase letters?");
@@ -56,12 +56,6 @@ function buttonPassword() {
     }
 
 
-    if (numberCase === true) {
-        for (let i = 0; i < numberCaseArray.length; i++) {
-            const numRandom = numberCaseArray[Math.floor(Math.random() * numberCaseArray.length)];
-            combinedArr.push(numRandom);
-        }
-    }
     if (lowerCase === true) {
         for (let i = 0; i < lowerCaseArray.length; i++) {
             const lowerRandom = lowerCaseArray[Math.floor(Math.random() * lowerCaseArray.length)];
@@ -75,6 +69,13 @@ function buttonPassword() {
         }
     }
 
+    if (numberCase === true) {
+        for (let i = 0; i < numberCaseArray.length; i++) {
+            const numRandom = numberCaseArray[Math.floor(Math.random() * numberCaseArray.length)];
+            combinedArr.push(numRandom);
+        }
+    }
+
     if (symbolCase === true) {
         for (let i = 0; i < symbolCaseArray.length; i++) {
             const specialRandom = symbolCaseArray[Math.floor(Math.random() * symbolCaseArray.length)];
@@ -84,8 +85,8 @@ function buttonPassword() {
     
 }
 
-
-let passwordButton = document.querySelector("password");
+//The DOM elements to capture that reacts to the users actions on the HTML file.
+//let passwordButton = document.querySelector("password");
    
 let generateBtn = document.querySelector("#generate");
 
@@ -93,7 +94,7 @@ generateBtn.addEventListener("click", buttonPassword);
 generateBtn.addEventListener("click", writePassword);    
 
 
-// Write password to the #password input
+// This is the function that utilizes the users parameters and prints it to the text box in the HTML file.
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
